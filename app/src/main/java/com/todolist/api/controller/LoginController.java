@@ -1,16 +1,22 @@
 package com.todolist.api.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.todolist.api.common.constant.ParameterConst;
 
-@RestController
+/**
+ * ログイン コントローラー
+ *
+ */
+@Controller
 public class LoginController {
 
-	@GetMapping(ParameterConst.PARAM_LOGIN)
-	public String greeting() {
-//		return new Greeting(counter.incrementAndGet(), String.format(template, name));
-		return "test";
+	/**
+	 * @return ログイン画面 URL
+	 */
+	@GetMapping(ParameterConst.REQ_PARAM_LOGIN)
+	public String login() {
+		return ParameterConst.RES_BASE + ParameterConst.RES_PARAM_LOGIN;
 	}
 }
