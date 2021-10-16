@@ -3,6 +3,8 @@ var app1 = new Vue({
 	data: {
 		userName: null, // ユーザ名
 		password: null, // パスワード
+		url: "/executeLogin", // ログイン処理の際にサーバと通信するURL
+		data: null, // サーバと通信時のリクエストパラメータ
 	},
 	methods: {
 		/* 入力されたユーザ名を格納する */
@@ -19,13 +21,12 @@ var app1 = new Vue({
 		login: function(event) {
 			console.log(event);
 
-			const url = "/executeLogin";
-			const data = {
+			this.data = {
 				userName: this.userName,
 				password: this.password
 			};
 			
-			axios.post(url, data
+			axios.post(this.url, this.data
 			).then(response => {
 				this.result = response.data
 			}).catch(err => {

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todolist.api.common.constant.ParameterConstants;
-import com.todolist.api.domain.entity.LoginRequest;
+import com.todolist.api.domain.model.LoginForm;
 
 /**
  * ログイン コントローラー
@@ -33,7 +33,8 @@ public class LoginController {
 	 */
 	@PostMapping(ParameterConstants.REQ_EXECUTE_LOGIN)
 	@ResponseBody
-	public String login(@RequestBody LoginRequest loginReq) {
+	public String login(@RequestBody LoginForm loginReq) {
+		// ログイン処理実施
 		return "ok";
 //		return ParameterConstants.RES_BASE + ParameterConstants.RES_PARAM_LOGIN;
 	}
