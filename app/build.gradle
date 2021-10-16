@@ -33,6 +33,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:30.1-jre'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
     
     // Spring Bootの依存関係
     implementation 'org.springframework.boot:spring-boot-starter-actuator'

@@ -4,20 +4,34 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/login.js" defer></script>
+<title>ログイン</title>
 </head>
 <body>
-
-<header style="background-color:gray">Header</header>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2" style="background-color:red;">Red</div>
-    <div class="col-sm-8" style="background-color:blue;">Blue</div>
-    <div class="col-sm-2" style="background-color:yellow;">Yellow</div>
-  </div>
-</div>
-<footer style="background-color:gray">Footer</footer>
-
+	<h1>ログイン</h1>
+	<hr>
+	<div align="center" id="app">
+		<form>
+			<table border="0">
+				<tr>
+					<th>ユーザ名</th>
+					<td><input type="text" name="userName" value="" size="100" @blur="inputUserName"></td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+					<td><input type="password" name="password" value="" size="100" @blur="inputPassword">></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="ログイン" @click="login">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

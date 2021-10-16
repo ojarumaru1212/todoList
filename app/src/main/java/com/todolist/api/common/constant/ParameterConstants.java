@@ -4,10 +4,13 @@ package com.todolist.api.common.constant;
  * エンドポイント 定数クラス
  *
  */
-public class ParameterConst {
+public class ParameterConstants {
 	
 	/**	ログイン画面 リクエストエンドポイント */
 	public static final String REQ_PARAM_LOGIN = "/login";
+
+	/**	ログイン画面 ログイン処理実施エンドポイント */
+	public static final String REQ_EXECUTE_LOGIN = "/executeLogin";
 	
 	/** ページ基底URL */
 	public static final String RES_BASE = "/page";
