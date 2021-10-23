@@ -12,6 +12,9 @@ public class ParameterConstants {
 	/**	ログイン画面 ログイン処理実施エンドポイント */
 	public static final String REQ_EXECUTE_LOGIN = "/executeLogin";
 	
+	/**	ホーム画面 初期処理エンドポイント */
+	public static final String REQ_PARAM_HOME = "/home";
+
 	/** ページ基底URL */
 	public static final String RES_BASE = "/page";
 

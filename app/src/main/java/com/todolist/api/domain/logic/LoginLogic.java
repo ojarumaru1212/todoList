@@ -1,8 +1,11 @@
 package com.todolist.api.domain.logic;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.todolist.api.common.constant.SessionConstants;
 import com.todolist.api.domain.mapper.UserMapper;
 import com.todolist.api.domain.model.LoginForm;
 
@@ -14,10 +17,12 @@ import com.todolist.api.domain.model.LoginForm;
 public class LoginLogic {
 
 	private final UserMapper mapper;
+	private final HttpSession session;  
 	
 	@Autowired
-	public LoginLogic(UserMapper mapper) {
+	public LoginLogic(UserMapper mapper, HttpSession session) {
 		this.mapper = mapper;
+		this.session = session;
 	}
 	
 	/**
@@ -35,6 +40,9 @@ public class LoginLogic {
 		if(updatedCnt == 0) {
 			return successedFlg;
 		}
+		
+		// ユーザ情報をセッションに格納
+		session.setAttribute(SessionConstants.LOGIN_FORM, loginReq);
 		
 		successedFlg = true;
 		return successedFlg;
