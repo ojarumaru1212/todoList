@@ -1,12 +1,16 @@
 var app1 = new Vue({
 	el: '#app',
 	data: {
+		loading: true, // ローディング表示可否フラグ（true:表示、false:非表示）
 		userName: null, // ユーザ名
 		password: null, // パスワード
 		url: "/executeLogin", // ログイン処理の際にサーバと通信するURL
 		data: null, // サーバと通信時のリクエストパラメータ
 		result: null,// ログイン処理実施結果（true:成功、false:失敗）
 		locationUrl: "/page/home.html", // ログイン成功時の先に先URL
+	},
+	mounted: function() {
+		this.loading = false;
 	},
 	methods: {
 		/* 入力されたユーザ名を格納する */
@@ -20,7 +24,7 @@ var app1 = new Vue({
 			console.log("パスワード入力 : " + this.password);
 		},
 		/* ログイン処理をするため、サーバと通信する */
-		login: async function(event) {
+		loginStart: function(event) {
 			console.log(event);
 
 			this.data = {
@@ -28,33 +32,19 @@ var app1 = new Vue({
 				password: this.password
 			};
 
-			/*this.result = await loginExecute(this);*/
-			/*await axios.post(this.url, this.data
-				).then(response => {
-					this.result = response.data;
-					if (this.result === true) {
-						location.href = this.locationUrl;
-					}
-				}).catch(err => {
-					alert(err);
-				})*/
-			const response = await axios.post(this.url, this.data);
-			this.result = response.data;
-			if (this.result === true) {
-				location.href = this.locationUrl;
-			}
+			// ローディング開始
+			this.loading = true;
 
+			axios.post(this.url, this.data
+			).then(response => {
+				this.result = response.data;
+				if (this.result === true) {
+					location.href = this.locationUrl;
+				}
+			}).catch(err => {
+				alert(err);
+			})
 
 		}
 	}
 })
-
-const loginExecute = async (vueThis) => {
-	return await axios.post(vueThis.url, vueThis.data
-	).then(response => {
-		return response.data;
-
-	}).catch(err => {
-		alert(err);
-	})
-};
