@@ -1,13 +1,10 @@
 package com.todolist.api.domain.logic;
 
-import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.todolist.api.domain.entity.User;
+import com.todolist.api.domain.mapper.UserMapper;
 import com.todolist.api.domain.model.LoginForm;
-import com.todolist.api.domain.repository.UserRepository;
 
 /**
  * ログイン ロジッククラス
@@ -16,11 +13,11 @@ import com.todolist.api.domain.repository.UserRepository;
 @Component
 public class LoginLogic {
 
-	private final UserRepository repository;
+	private final UserMapper mapper;
 	
 	@Autowired
-	public LoginLogic(UserRepository repository) {
-		this.repository = repository;
+	public LoginLogic(UserMapper mapper) {
+		this.mapper = mapper;
 	}
 	
 	/**
@@ -33,9 +30,9 @@ public class LoginLogic {
 		boolean successedFlg = false;
 		
 		// ユーザマスタより、入力されたユーザID、パスワードに一致するレコードを取得
-		User user = repository.findByUserIdAndPassword(loginReq.getUserName(), loginReq.getPassword());
+		int updatedCnt = mapper.findByUserIdAndPassword(loginReq.getUserName(), loginReq.getPassword());
 		// 一致件数0件
-		if(Objects.isNull(user)) {
+		if(updatedCnt == 0) {
 			return successedFlg;
 		}
 		
