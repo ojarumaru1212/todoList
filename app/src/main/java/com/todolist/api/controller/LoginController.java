@@ -53,7 +53,6 @@ public class LoginController {
 		
 		// シリアライズ
 		String json = mapper.writeValueAsString(successedFlg);
-		System.out.println(json);
 
 		return json;
 	}
