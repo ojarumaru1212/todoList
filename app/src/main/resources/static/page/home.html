@@ -23,10 +23,35 @@
 		<div v-else>
 			<h1>ホーム</h1>
 			<hr>
-			<ol>
-				<li v-for="todo in result">{{ todo.title }} : {{todo.detail}} :
-					{{todo.remark}}</li>
-			</ol>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>タスク</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody v-for="todo in result">
+					<!-- 未完了のタスク -->
+					<tr class="p-3 mb-2 bg-light text-dark"
+						v-if="todo.deletedFlg == '0' && todo.completedFlg == '0'">
+						<td>{{ todo.title }}</td>
+						<td><button type="button" class="btn btn-primary float-right"  @click="completeTask(todo.taskNo)">完了</button></td>
+						<td><button type="button" class="btn btn-primary float-right"  @click="deleteTask(todo.taskNo)">削除</button></td>
+						<td></td>
+					</tr>
+					<!-- 完了済みのタスク -->
+					<tr class="p-3 mb-2 bg-secondary text-white"
+						v-else-if="todo.deletedFlg == '0' && todo.completedFlg == '1'">
+						<td>{{ todo.title }}</td>
+						<td></td>
+						<td><button type="button" class="btn btn-primary float-right"  @click="deleteTask(todo.taskNo)">削除</button></td>
+						<td><button type="button" class="btn btn-primary float-right"  @click="revertTask(todo.taskNo)">戻す</button></td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="button" class="btn btn-primary float-right">タスク登録</button>
 		</div>
 	</div>
 </body>

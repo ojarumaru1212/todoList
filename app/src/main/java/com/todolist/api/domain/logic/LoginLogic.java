@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.todolist.api.common.constant.SessionConstants;
 import com.todolist.api.domain.mapper.UserMapper;
@@ -31,6 +32,7 @@ public class LoginLogic {
 	 * @param loginReq 入力情報
 	 * @return true:ログイン成功、false:ログイン失敗
 	 */
+	@Transactional(rollbackFor=Exception.class)
 	public boolean login(LoginForm loginReq) {
 		boolean successedFlg = false;
 		
