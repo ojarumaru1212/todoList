@@ -8,7 +8,7 @@ var app1 = new Vue({
 		revert_url: "/revert", // 戻すボタン押下時にサーバと通信するURL
 		data: null, // サーバと通信時のリクエストパラメータ
 		result: null,// サーバで取得したタスク一覧
-		locationUrl: "/page/home.html", // ログイン成功時の先に先URL
+		locationUrl: "/page/registTask.html", // タスク登録画面URL
 	},
 	mounted: function() {
 		axios.get(this.init_url
@@ -79,6 +79,11 @@ var app1 = new Vue({
 			}).catch(err => {
 				alert(err);
 			})
+		},
+		/* タスク登録ボタン押下時の処理 */
+		registTask: function(event) {
+			// タスク登録画面に遷移
+			location.href = this.locationUrl;
 		}
 	}
 })
