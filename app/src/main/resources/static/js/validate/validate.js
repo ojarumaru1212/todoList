@@ -14,9 +14,9 @@ const isRequired = (value) => {
 * @param maxlength 最大桁数
 * @return true:チェックOK、false:チェックNG
 */
-const isLength = (value, minlength, maxlength) => {
-	const valueLength = value.length();
-	return valueLength >= minlength && valueLength <= maxlength;
+const isLength = (value, minLength, maxLength) => {
+	const valueLength = value.length;
+	return valueLength >= minLength && valueLength <= maxLength;
 }
 
 /**
@@ -25,7 +25,8 @@ const isLength = (value, minlength, maxlength) => {
 * @return true:チェックOK、false:チェックNG
 */
 const isFormat = (value) => {
-	const FullWidth = new RegExp(/^[^\x20-\x7e]*$/);
-	const HalfWidth = new RegExp(/^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/);
-	return FullWidth.test(value) || HalfWidth.test(value);
+	const FullWidth = new RegExp(/^([a-zA-Z0-9!-/:-@¥[-`{-~]|[^\x20-\x7e])*$/);
+	/*const HalfWidth = new RegExp(/^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/);*/
+	/*return FullWidth.test(value) || HalfWidth.test(value);*/
+	return FullWidth.test(value);
 }
