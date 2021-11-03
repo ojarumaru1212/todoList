@@ -59,4 +59,17 @@ public interface TaskMapper {
 	 */
 	@Update("UPDATE tbl_task SET deleted_flg = '1', updated_date = now() where task_no = #{taskNo}")
 	int updateDeletedFlg(@Param("taskNo") int taskNo);
+
+	/**
+	 * タスクを登録する
+	 * 
+	 * @param title  タイトル
+	 * @param useId  ユーザID
+	 * @param detail 詳細
+	 * @param remark 備考
+	 * @return 登録件数
+	 */
+	@Update("INSERT INTO tbl_task (title, user_id, detail, remark, completed_flg, deleted_flg, registed_date, updated_date) VALUES(#{title}, #{userId},  #{detail}, #{remark}, '0', '0', now(), now())")
+	int registTask(@Param("title") String title, @Param("userId") String userId, @Param("detail") String detail,
+			@Param("remark") String remark);
 }

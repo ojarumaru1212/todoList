@@ -13,7 +13,7 @@ import lombok.Data;
 public class Task implements Serializable {
     private Long taskNo;
     private String title;
-    private String UserId;
+    private String userId;
     private String detail;
     private String remark;
     private String completedFlg;
