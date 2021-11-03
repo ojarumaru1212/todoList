@@ -25,8 +25,6 @@ const isLength = (value, minLength, maxLength) => {
 * @return true:チェックOK、false:チェックNG
 */
 const isFormat = (value) => {
-	const FullWidth = new RegExp(/^([a-zA-Z0-9!-/:-@¥[-`{-~]|[^\x20-\x7e])*$/);
-	/*const HalfWidth = new RegExp(/^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/);*/
-	/*return FullWidth.test(value) || HalfWidth.test(value);*/
-	return FullWidth.test(value);
+	const checkWidth = new RegExp(/^([a-zA-Z0-9!-/:-@¥[-`{-~]|[^\x20-\x7e])*$/);
+	return checkWidth.test(value);
 }
