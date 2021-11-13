@@ -5,6 +5,7 @@ var app1 = new Vue({
 		title: null, // タイトル
 		detail: null, // 詳細
 		remark: null, // 備考
+		buttonActive: false, // 登録ボタン活性フラグ（true:活性、false:非活性）
 		url: "/registTask", // タスク登録の際にサーバと通信するURL
 		data: null, // サーバと通信時のリクエストパラメータ
 		result: null,// ログイン処理実施結果（true:成功、false:失敗）
@@ -20,6 +21,7 @@ var app1 = new Vue({
 			if (!validChk) return;
 
 			this.title = event.target.value;
+			this.buttonActive = true;
 			console.log("タイトル入力 : " + this.title);
 		},
 		/* 入力された詳細を格納する */
@@ -41,6 +43,8 @@ var app1 = new Vue({
 		/* タスクを登録するため、サーバと通信する */
 		registTask: function(event) {
 			console.log(event);
+
+			// 入力チェック
 
 			this.data = {
 				title: this.title,

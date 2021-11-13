@@ -15,8 +15,8 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <!-- <script
 	src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> -->
-<script src="/js/jquery-3.6.0.min.js" ></script>
-<script src="/js/validate/validate.js" ></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/validate/validate.js"></script>
 <script src="/js/registTask.js" defer></script>
 <title>タスク登録</title>
 </head>
@@ -34,19 +34,23 @@
 					<table class="table">
 						<tr>
 							<th>タイトル</th>
-							<td><input id="first" type="text" name="title" value="" size="100"
-								@blur="inputTitle" ></td>
+							<td><input id="first" type="text" name="title" value=""
+								size="100" @blur="inputTitle"></td>
 						</tr>
 						<tr>
 							<th>詳細</th>
-							<td><textarea name="detail" cols="100" rows="5"  @blur="inputDetail"></textarea></td>
+							<td><textarea name="detail" cols="100" rows="5"
+									@blur="inputDetail"></textarea></td>
 						</tr>
 						<tr>
 							<th>備考</th>
-							<td><textarea name="remark" cols="100" rows="5"  @blur="inputRemark"></textarea></td>
+							<td><textarea name="remark" cols="100" rows="5"
+									@blur="inputRemark"></textarea></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="submit" value="登録"
+							<td v-if="!buttonActive" colspan="2"><input type="submit"
+								value="登録" disabled></td>
+							<td v-else colspan="2"><input type="submit" value="登録"
 								@click="registTask"></td>
 						</tr>
 					</table>
