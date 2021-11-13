@@ -60,6 +60,9 @@ var app1 = new Vue({
 				this.result = response.data;
 				if (this.result === true) {
 					location.href = this.locationUrl;
+				} else {
+					// ローディング終了
+					this.loading = false;
 				}
 			}).catch(err => {
 				alert(err);
