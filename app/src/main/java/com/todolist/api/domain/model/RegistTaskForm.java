@@ -22,9 +22,9 @@ public class RegistTaskForm {
 
 	@Size(min = 1, max = 500, message = "{task.remark.length}")
 	@Pattern(regexp = "^[a-zA-Z0-9!-/:\\[\\-@-`{-~|^\\x20-\\x7e]*", message = "{task.remark.pattern}")
-	private String userId;
-
 	private String remark;
+	
+	private String userId;
 	private String completedFlg;
 	private String deletedFlg;
 }
