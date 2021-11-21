@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.todolist.api.common.constant.ParameterConstants;
-import com.todolist.api.domain.model.LoginForm;
+import com.todolist.api.domain.model.LoginRequestForm;
 import com.todolist.api.domain.service.LoginService;
 
 /**
@@ -47,7 +47,7 @@ public class LoginController {
 	 */
 	@PostMapping(ParameterConstants.REQ_EXECUTE_LOGIN)
 	@ResponseBody
-	public String login(@RequestBody LoginForm loginReq) throws JsonProcessingException {
+	public String login(@RequestBody LoginRequestForm loginReq) throws JsonProcessingException {
 		// ログイン処理実施
 		boolean successedFlg = service.login(loginReq);
 		

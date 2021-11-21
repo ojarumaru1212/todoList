@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Component
 @Data
-public class RegistTaskForm {
+public class RegistTaskRequestForm {
 	@NotEmpty(message = "{task.title.required}")
 	@Size(min = 1, max = 100, message = "{task.title.length}")
 	@Pattern(regexp = "^[a-zA-Z0-9!-/:\\[\\-@-`{-~|^\\x20-\\x7e]*", message = "{task.title.pattern}")

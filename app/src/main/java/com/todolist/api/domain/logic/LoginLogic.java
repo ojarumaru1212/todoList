@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.todolist.api.common.constant.SessionConstants;
 import com.todolist.api.domain.mapper.UserMapper;
-import com.todolist.api.domain.model.LoginForm;
+import com.todolist.api.domain.model.LoginRequestForm;
 
 /**
  * ログイン ロジッククラス
@@ -33,7 +33,7 @@ public class LoginLogic {
 	 * @return true:ログイン成功、false:ログイン失敗
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	public boolean login(LoginForm loginReq) {
+	public boolean login(LoginRequestForm loginReq) {
 		boolean successedFlg = false;
 		
 		// ユーザマスタより、入力されたユーザID、パスワードに一致するレコードを取得

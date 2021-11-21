@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.todolist.api.domain.logic.RegistTaskLogic;
-import com.todolist.api.domain.model.RegistTaskForm;
+import com.todolist.api.domain.model.RegistTaskRequestForm;
 
 /**
  * タスク登録 サービスクラス
@@ -23,10 +23,10 @@ public class RegistTaskService {
 	/**
 	 * タスクを登録するため、ロジッククラスを呼び出す
 	 * 
-	 * @param RegistTaskForm タスク情報
+	 * @param RegistTaskRequestForm タスク情報
 	 * @return true:登録件数1件、false:登録件数1件以外
 	 */
-	public boolean RegistTask(RegistTaskForm form) {
+	public boolean RegistTask(RegistTaskRequestForm form) {
 		return logic.registTask(form);
 	}
 }

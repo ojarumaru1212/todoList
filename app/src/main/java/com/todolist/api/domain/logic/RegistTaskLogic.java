@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 import com.todolist.api.common.constant.SessionConstants;
 import com.todolist.api.domain.mapper.TaskMapper;
-import com.todolist.api.domain.model.LoginForm;
-import com.todolist.api.domain.model.RegistTaskForm;
+import com.todolist.api.domain.model.LoginRequestForm;
+import com.todolist.api.domain.model.RegistTaskRequestForm;
 
 /**
  * タスク登録 ロジッククラス
@@ -31,9 +31,9 @@ public class RegistTaskLogic {
 	 * 
 	 * @return true:登録件数1件、false:登録件数1件以外
 	 */
-	public boolean registTask(RegistTaskForm form) {
+	public boolean registTask(RegistTaskRequestForm form) {
 		// セッションよりユーザ情報を取得
-		LoginForm loginForm = (LoginForm) session.getAttribute(SessionConstants.LOGIN_FORM);
+		LoginRequestForm loginForm = (LoginRequestForm) session.getAttribute(SessionConstants.LOGIN_FORM);
 
 		int registCnt = mapper.registTask(form.getTitle(), loginForm.getUserName(), form.getDetail(), form.getRemark());
 

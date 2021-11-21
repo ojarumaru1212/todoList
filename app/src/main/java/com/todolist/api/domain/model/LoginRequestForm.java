@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Component
 @Data
-public class LoginForm {
+public class LoginRequestForm {
 	private String userName;
 	private String password;
 }

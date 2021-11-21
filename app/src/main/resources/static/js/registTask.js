@@ -1,4 +1,4 @@
-var app1 = new Vue({
+let app1 = new Vue({
 	el: '#app',
 	data: {
 		loading: true, // ローディング表示可否フラグ（true:表示、false:非表示）
@@ -58,9 +58,15 @@ var app1 = new Vue({
 			axios.post(this.url, this.data
 			).then(response => {
 				this.result = response.data;
-				if (this.result === true) {
+				// 登録が正常に完了した場合
+				if (this.result.registSuccessFlg === true) {
 					location.href = this.locationUrl;
+					// 上記以外
 				} else {
+					// モーダルに表示する文言を格納
+					modalApp.messages = this.result.messages;
+					// モーダルを表示
+					modalApp.modalOpen();
 					// ローディング終了
 					this.loading = false;
 				}
