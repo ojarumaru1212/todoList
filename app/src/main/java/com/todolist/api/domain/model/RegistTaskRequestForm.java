@@ -10,7 +10,6 @@ import lombok.Data;
 
 /**
  * タスク登録 リクエストクラス<br>
- * タスクテーブルに登録する項目も併せて定義している。
  *
  */
 @Component
@@ -39,20 +38,4 @@ public class RegistTaskRequestForm {
 	@Size(min = 1, max = 500, message = "{task.remark.length}")
 	@Pattern(regexp = "^[a-zA-Z0-9!-/:\\[\\-@-`{-~|^\\x20-\\x7e]*", message = "{task.remark.pattern}")
 	private String remark;
-	
-	/**
-	 * ユーザID
-	 */
-	private String userId;
-	
-	/**
-	 * 完了フラグ
-	 */
-	private String completedFlg;
-	
-	
-	/**
-	 * 削除フラグ
-	 */
-	private String deletedFlg;
 }
