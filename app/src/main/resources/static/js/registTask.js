@@ -44,12 +44,11 @@ let app1 = new Vue({
 		registTask: function(event) {
 			console.log(event);
 
-			// 入力チェック
-
+			// 入力チェック（サーバ側の入力処理の都合上、空文字の場合nullを設定する）
 			this.data = {
-				title: this.title,
-				detail: this.detail,
-				remark: this.remark
+				title: this.title === "" ? null : this.title,
+				detail: this.detail === "" ? null : this.detail,
+				remark: this.remark === "" ? null : this.remark
 			};
 
 			// ローディング開始
