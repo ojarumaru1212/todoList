@@ -6,6 +6,10 @@ import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * タスク登録 レスポンスクラス
+ *
+ */
 //@Component
 @Data
 @Builder
