@@ -30,7 +30,6 @@
 
 		<div v-else>
 			<h1>タスク登録</h1>
-			<hr>
 			<div align="center">
 				<form>
 					<table class="table">
@@ -50,10 +49,11 @@
 									@blur="inputRemark"></textarea></td>
 						</tr>
 						<tr>
-							<td v-if="!buttonActive" colspan="2"><input type="submit"
-								value="登録" disabled></td>
-							<td v-else colspan="2"><input type="submit" value="登録"
+							<td v-if="!buttonActive"><input type="submit" value="登録"
+								disabled></td>
+							<td v-else><input type="submit" value="登録"
 								@click="registTask"></td>
+							<td><input type="submit" value="戻る" @click="backPage"></td>
 						</tr>
 					</table>
 				</form>
@@ -62,8 +62,6 @@
 	</div>
 
 	<div id="modal">
-		<button id="modalOpen" class="button" @click="modalOpen">Click
-			Me</button>
 		<div id="easyModal" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">

@@ -9,7 +9,7 @@ let app1 = new Vue({
 		url: "/registTask", // タスク登録の際にサーバと通信するURL
 		data: null, // サーバと通信時のリクエストパラメータ
 		result: null,// ログイン処理実施結果（true:成功、false:失敗）
-		locationUrl: "/page/home.html", // タスク登録成功時の先に先URL
+		locationUrl: "/page/home.html", // タスク登録成功時の遷移先URL、戻るボタン押下時のURL
 	},
 	mounted: function() {
 		this.loading = false;
@@ -73,6 +73,13 @@ let app1 = new Vue({
 				alert(err);
 			})
 
+		},
+		/* 戻るボタン押下時にホーム画面に遷移する */
+		backPage: function() {
+			// ローディング開始
+			this.loading = true;
+			
+			location.href = this.locationUrl;
 		}
 	}
 })
