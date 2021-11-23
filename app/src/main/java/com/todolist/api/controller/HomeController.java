@@ -13,7 +13,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.todolist.api.common.constant.ParameterConstants;
 import com.todolist.api.domain.entity.Task;
-import com.todolist.api.domain.model.HomeForm;
+import com.todolist.api.domain.model.HomeRequestForm;
 import com.todolist.api.domain.service.HomeService;
 
 /**
@@ -57,7 +57,7 @@ public class HomeController {
 	 * @throws JsonProcessingException
 	 */
 	@PostMapping(ParameterConstants.REQ_PARAM_COMPLETE)
-	public String complete(@RequestBody HomeForm form) throws JsonProcessingException {
+	public String complete(@RequestBody HomeRequestForm form) throws JsonProcessingException {
 		int updateCnt = service.updateCompletedFlg(form.getTaskNo());
 
 		// ホーム画面の初期処理にリダイレクトし、タスク一覧を取得する
@@ -72,7 +72,7 @@ public class HomeController {
 	 * @throws JsonProcessingException
 	 */
 	@PostMapping(ParameterConstants.REQ_PARAM_DELETE)
-	public String delete(@RequestBody HomeForm form) throws JsonProcessingException {
+	public String delete(@RequestBody HomeRequestForm form) throws JsonProcessingException {
 		int updateCnt = service.updateDeletedFlg(form.getTaskNo());
 
 		// ホーム画面の初期処理にリダイレクトし、タスク一覧を取得する
@@ -87,7 +87,7 @@ public class HomeController {
 	 * @throws JsonProcessingException
 	 */
 	@PostMapping(ParameterConstants.REQ_PARAM_REVERT)
-	public String revert(@RequestBody HomeForm form) throws JsonProcessingException {
+	public String revert(@RequestBody HomeRequestForm form) throws JsonProcessingException {
 		int updateCnt = service.revertCompletedFlg(form.getTaskNo());
 
 		// ホーム画面の初期処理にリダイレクトし、タスク一覧を取得する

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/loading.css">
+<link rel="stylesheet" href="/css/modal.css">
+<!-- vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<!-- axios -->
+<!-- <script
+	src="https://cdn.jsdelivr.net/npm/axios@0.23.0/dist/axios.min.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- <script
+	src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> -->
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/validate/validate.js"></script>
+<script src="/js/modal.js" defer></script>
+<script src="/js/registTask.js" defer></script>
+<title>タスク登録</title>
+</head>
+<body>
+	<div id="app">
+		<div id="loading" v-if="loading">
+			<div class="spinner"></div>
+		</div>
+
+		<div v-else>
+			<h1>タスク登録</h1>
+			<div align="center">
+				<form>
+					<table class="table">
+						<tr>
+							<th>タイトル</th>
+							<td><input id="first" type="text" name="title" value=""
+								size="100" @blur="inputTitle"></td>
+						</tr>
+						<tr>
+							<th>詳細</th>
+							<td><textarea name="detail" cols="100" rows="5"
+									@blur="inputDetail"></textarea></td>
+						</tr>
+						<tr>
+							<th>備考</th>
+							<td><textarea name="remark" cols="100" rows="5"
+									@blur="inputRemark"></textarea></td>
+						</tr>
+						<tr>
+							<td v-if="!buttonActive"><input type="submit" value="登録"
+								disabled></td>
+							<td v-else><input type="submit" value="登録"
+								@click="registTask"></td>
+							<td><input type="submit" value="戻る" @click="backPage"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="modal">
+		<div id="easyModal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1>エラー内容</h1>
+					<span class="modalClose" @click="modalClose">×</span>
+				</div>
+				<div class="modal-body" v-for="message in messages">
+					<ui>{{message}}</ui>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -24,6 +24,9 @@ public class ParameterConstants {
 	/**	ホーム画面 戻すボタン押下処理エンドポイント */
 	public static final String REQ_PARAM_REVERT = "/revert";
 
+	/**	タスク登録画面 登録ボタン押下処理エンドポイント */
+	public static final String REQ_PARAM_REGIST_TASK = "/registTask";
+
 	/** ページ基底URL */
 	public static final String RES_BASE = "/page";
 

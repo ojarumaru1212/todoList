@@ -7,6 +7,6 @@ import lombok.Data;
  *
  */
 @Data
-public class HomeForm {
+public class HomeRequestForm {
 	private int taskNo;
 }

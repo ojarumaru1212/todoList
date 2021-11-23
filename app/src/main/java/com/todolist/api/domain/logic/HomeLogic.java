@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.todolist.api.common.constant.SessionConstants;
 import com.todolist.api.domain.entity.Task;
 import com.todolist.api.domain.mapper.TaskMapper;
-import com.todolist.api.domain.model.LoginForm;
+import com.todolist.api.domain.model.LoginRequestForm;
 
 /**
  * ホーム ロジッククラス
@@ -36,7 +36,7 @@ public class HomeLogic {
 	 */
 	public List<Task> getTask() {
 		// セッションよりユーザ情報を取得
-		LoginForm loginForm = (LoginForm) session.getAttribute(SessionConstants.LOGIN_FORM);
+		LoginRequestForm loginForm = (LoginRequestForm) session.getAttribute(SessionConstants.LOGIN_FORM);
 
 		return mapper.selectTask(loginForm.getUserName());
 	}
